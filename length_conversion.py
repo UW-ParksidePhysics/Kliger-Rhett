@@ -1,0 +1,10 @@
+meter=30**8
+print('meter=',meter)
+inch=meter/0.0254
+print('inch=',inch)
+foot=inch/12
+print('foot=',foot)
+yard=foot/3
+print('yard=',yard)
+mile=foot/5280
+print('mile=',mile)
