@@ -1,0 +1,14 @@
+iron=6.98*1000
+air=0.0012*1000
+gas=0.755*1000
+ice=0.9167*1000
+human=0.985*1000
+silver=10.95*1000
+platinum=21.45*1000
+print('mass per liter of iron = ',iron,'grams')
+print('mass per liter of air = ',air,'grams')
+print('mass per liter of gasoline = ',gas,'grams')
+print('mass per liter of ice = ',ice,'grams')
+print('mass per liter of human tissue = ',human,'grams')
+print('mass per liter of silver = ',silver,'grams')
+print('mass per liter of platinum = ',platinum,'grams')
