@@ -6,3 +6,5 @@ h = (b-a)/float(n)
 for i in range(0, n+1):
     xvalues.append(a+i*h)
 print(xvalues)
+
+c = 100
