@@ -1,0 +1,10 @@
+seconds=10**9
+print('seconds=',seconds)
+minutes=seconds/60
+print('minutes=',minutes)
+hours=minutes/60
+print('hours=',hours)
+days=hours/24
+print('days=',days)
+years=days/365
+print('years=',years)
