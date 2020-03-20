@@ -1,0 +1,116 @@
+1+2*3
+
+ans =
+
+     7
+
+>> x=1+2*3
+
+x =
+
+     7
+
+>> 4*x
+
+ans =
+
+    28
+
+>> t=5
+
+t =
+
+     5
+
+>> t=t+1
+
+t =
+
+     6
+
+>> (1+2)*3
+
+ans =
+
+     9
+
+>> 1/2+3^2+4/5*6/7
+
+ans =
+
+   10.1857
+
+>> 1/(2+3^2)+4/5*6/7
+
+ans =
+
+    0.7766
+
+>> format short
+>> x=-163.6667
+
+x =
+
+ -163.6667
+
+>> format long
+>> x
+
+x =
+
+    -1.636667000000000e+02
+
+>> diary
+Unable to run the 'diary' function, because
+it is not supported for MATLAB Mobile.
+ 
+>> a=7; b=cos(a), c=cosh(a)
+
+b =
+
+   0.753902254343305
+
+
+c =
+
+     5.483170351552120e+02
+
+>> help sqrt
+ sqrt   Square root.
+    sqrt(X) is the square root of the elements of X. Complex 
+    results are produced if X is not positive.
+ 
+    See also sqrtm, realsqrt, hypot.
+
+    Documentation for sqrt
+    Other functions named sqrt
+
+>> doc plot
+Command not supported.
+>> Introduction
+Error: File: Introduction.m Line: 3 Column: 6
+Invalid expression. Check for missing or
+extra characters.
+ 
+>> a=24+22; b=sin(a),c=sinh(a)
+
+b =
+
+   0.901788347648809
+
+
+c =
+
+     4.748059710301224e+19
+
+>> 8/(9+10^2)+11/12*13/14
+
+ans =
+
+   0.924584971603320
+
+>> 8/9+10^2+11/12*13/14
+
+ans =
+
+     1.017400793650794e+02
