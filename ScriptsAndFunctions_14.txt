@@ -1,0 +1,89 @@
+diary on
+A=[1 2 3;3 3 4;2 3 3];
+b=[1;1;2];
+x=A\b
+
+x =
+
+   -0.5000
+    1.5000
+   -0.5000
+
+x=0:pi/100:2*pi;
+y1 = 2*cos(x);
+y2 = cos(x);
+y3 = 0.5*cos(x);
+plot(x,y1,"--",x,y2,"-",x,y3,":")
+xlabel("0 \leq x \leq 2\pi")
+ylabel("Cosine function")
+legend("2*cos(x)","cos(x)","0.5*cos(x)")
+title("Typical example of multiple plots")
+axis([0 2*pi -3 3])
+game1 = input("Enter the points scored in the first game ");
+Enter the points scored in the first game 10
+game2 = input("Enter the points scored in the second game");
+Enter the points scored in the second game15
+game3 = input("Enter the points scored in the third game ");
+Enter the points scored in the third game 20
+avergage = (game1+game2+game3)/3
+
+avergage =
+
+    15
+
+%Liz will be "a", Bob will be "b", and Carol will be "c".%
+%Format: Fruit numbers=[Liz;Bob;Carol]%
+Fruit=[3 12 1; 12 0 2; 0 0 3]; %I messed up originally and didn't put the 2 in for Bob%
+Cost=[2.36; 5.26; 2.77]
+
+Cost =
+
+    2.3600
+    5.2600
+    2.7700
+
+a=Fruit\Cost
+
+a =
+
+    0.2844
+    0.0486
+    0.9233
+
+%It costs 0.92 cents per cantaloupe, 4 cents a bananna, and 28 cents an
+%apple%
+F = input("Enter degrees Fahrenheit"); 
+Enter degrees Fahrenheit68
+%Boiling temperature for water is 100 degrees Celcisus, in Fahrenheit it is
+%212 degrees%
+%Freezing temperature for water 0 degrees Celcius, 32 degrees Fahrenheit%
+C  =((5/9)*(F-32))
+
+C =
+
+    20
+
+fprintf("The temperature in Celcius is...%d degrees Celcisus", C);
+The temperature in Celcius is...20 degrees Celcisus%OVERALL RESULT:SUCCESS%
+
+HI = input("Enter your height in inches");
+Enter your height in inches70
+WP = input("Enter your weight in pounds");
+Enter your weight in pounds187
+% 1 inch = 2.54cm %
+% 1 pound = 0.454kg %
+HCM = HI*(2.54)
+
+HCM =
+
+  177.8000
+
+WKG = WP*(0.454)
+
+WKG =
+
+   84.8980
+
+fprintf("You are %c centimeters tall and %c kilograms in mass", HCM, WKG);
+You are 1.778000e+02 centimeters tall and 8.489800e+01 kilograms in mass
+diary off
