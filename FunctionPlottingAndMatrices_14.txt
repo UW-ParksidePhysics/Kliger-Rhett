@@ -294,10 +294,11 @@ p13 = -0.5 * ((x - mu)/s3) .^ 2;
 p23 = (s3 * sqrt(2*pi));
 f3 = exp(p13) ./ p23; %Gaussian functionj with s3
 
-plot(x,f1,"-",x,f2,"--",x,f3,":") %Plot all functions on the same graph
+plot(x,f1,"-b",x,f2,"--g",x,f3,":k") %Plot all functions on the same graph makes first blue, second green, third black (the k).
 xlabel("x") %Labels and titles in this section
 ylabel("f(x-5,s)")
 title("Gaussian Function")
+legend("f1", "f2", "f3")
 axis([0 10 0 1]) %Axis should be 0 to 10 for x and 0 to 1 for y
 
 %OUTCOME: PENDING SUCCESS%
