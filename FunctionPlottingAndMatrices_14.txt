@@ -280,7 +280,7 @@ B =
 %Let m be the mean of 5 for all values
 %f = gauss_distribution(x, mu, s)
 mu = 5; %Mean is denoted by mu and is 5 for all graphs
-x = 0:1:5; % x is labeled between 0 and 5 in increments of 1
+x = 0:1:10; % x is labeled between 0 and 10 in increments of 1
 s1 = 0.5; %Standard deviation s1
 s2 = 1.0; %Standard deviation s2
 s3 = 1.5; %Standard deviation s3
@@ -298,7 +298,7 @@ plot(x,f1,"-",x,f2,"--",x,f3,":") %Plot all functions on the same graph
 xlabel("x") %Labels and titles in this section
 ylabel("f(x-5,s)")
 title("Gaussian Function")
-axis([0 5 0 1]) %Axis should be 0 to 5 for x and 0 to 1 for y
+axis([0 10 0 1]) %Axis should be 0 to 10 for x and 0 to 1 for y
 
 %OUTCOME: PENDING SUCCESS%
 %Create 5X5 Matrix%
