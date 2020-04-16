@@ -15,8 +15,7 @@ print(H)  # Prints the desired matrix
 w, v = LA.eig(H)
 print(w, v)  # I believe this  prints the eigenvalues and eigenvectors of H
 delta_x = 1/(n+1)
-norm = np.sqrt(np.sum(np.power(v,2) * delta_x))
-#normal = sqrt(sum(v**2 * delta_x))
+norm = np.sqrt(np.sum(np.power(v,2) * delta_x))  #normal = sqrt(sum(v**2 * delta_x))
 FiveV = v[:,n-2]
 print(FiveV)
 x = linspace(0, 1, n+2) # Makes the plot so that it is in between 0 and 1 with 5 spaces but not including 0 or 1

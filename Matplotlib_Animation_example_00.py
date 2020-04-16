@@ -1,9 +1,25 @@
 # Basic animation in Matplotlib.
-from numpy import *
 import matplotlib.pyplot as plt
+from matplotlib import animation
+import numpy as np
+from numpy import exp, pi, sqrt, linspace
 
-plt.ion()
+fig = plt.figure
+
 # Make a first plot
+
+def frame(args):
+    frame_no, s, x, lines = args
+    y = f(x, m, s)
+    lines[0].set_data(x, y)
+    return lines
+
+
+def init():
+    lines[0].set_data([], [])  # empty plot
+    return lines
+
+
 def f(x, m, s):
     return (1.0 / (sqrt(2 * pi) * s)) * exp(-0.5 * ((x - m) / s) ** 2)
 
@@ -21,12 +37,13 @@ lines = plt.plot(x, y)
 plt.axis([x[0], x[-1], -0.1, max_f])
 plt.xlabel('x')
 plt.ylabel('f')
-# Show the movie, and make hardcopies of frames simulatenously
-counter = 0
-for s in s_values:
-    y = f(x, m, s)
-    lines[0].set_ydata(y)
-    plt.legend(['s=%4.2f'.format(s)])
-    plt.draw()
-    plt.savefig('tmp_{:04d}.png'.format(counter))  # Print 4 digit integer with the value of counter starting at 0
-    counter += 1 #What does the format counter do?
+s = np.array(0.2, 2, 0.1)
+frame_no = np.array(0.2, 2, 0.1)
+all_args = (frame_no, s, x, lines)
+
+
+anim = animation.FuncAnimation(fig, frame, all_args, interval=150, init_func=init, blit=True)
+
+plt.plot()
+plt.show()
+
