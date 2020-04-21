@@ -9,9 +9,10 @@ y = []
 
 infile = open('densityinfo62.py', 'r')
 for line in infile:
-    coords = line.split()
-    x.append(coords[0])
-    y.append(coords[1])
+    coords = line.split()  # Lines separated by space
+    if coords[0][0] != '#':  # First characters in each string, isn't number then append?
+        x.append(float(coords[0]))
+        y.append(float(coords[1]))
 infile.close()
 
 x, y = np.array(x), np.array(y)

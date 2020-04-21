@@ -1,13 +1,13 @@
 # Make a program that reads the first column into a list x and the second column into a list y.
 # Then convert the lists to arrays,and plot the curve.Print out the maximum and minimum y coordinates.
-
+# 6.1 I just assumed that would be acceptable for pycharm
 import matplotlib.pyplot as plt
 import numpy as np
 
 x = []  # x is list
 y = []  # y is list
 
-infile = open('xy.dat.py', 'r')  # open xy.dat.py and 'r' is for reading # read data in xy.dat.py # infile looks at contents within a file
+infile = open('xy.dat', 'r')  # open xy.dat and 'r' is for reading # read data in xy.dat # infile looks at contents within a file
 for line in infile:
     coords = line.split()
     x.append(float(coords[0]))  # appends the coordinates that are for the x part
@@ -25,3 +25,4 @@ plt.plot(x, y, color='green', linewidth=1.5) #makes the curve green with a linew
 plt.xlabel('x') # Labels x axis as x
 plt.ylabel('y') # Labels y axis as y
 plt.show()  #Plots the info
+
