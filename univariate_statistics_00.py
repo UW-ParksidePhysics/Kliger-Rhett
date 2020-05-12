@@ -1,39 +1,39 @@
 # Calculate statistical characteristics of a data set
 
 # From two_column_text_read_00.py
-import numpy as np
+import sys
 
 
-data = list(un_data)
-while True:
+def univariate_statistics(data):
+    from numpy import std
+    un_data = zip(*data)
+    data = list(un_data)
     try:
-        u = data[0]
-        v = data[1]
-        break
+        min_x_value = min(data[0])  # Minimum x-value
+        max_x_value = max(data[0])  # Maximum x-value
     except IndexError:
-        print('Data Array has inappropriate dimensions, please use an array with two dimensions')
+        if not len(data) == 2:
+            print("You only need two columns of data!")
+    try:
+        minimum_y_value = min(data[1])  # Minimum y-value
+        maximum_y_value = max(data[1])  # Maximum y-value
+    except IndexError:
+        if len(data[0]) or len(data[1]) <=1:
+            print("You need more data points")
 
-# Mean
-mean2 = sum(v)/len(v)
+    # Mean
+    summation = sum(data[0]) + sum(data[1])
+    total = len(data[0]) + len(data[1])
+    mean = summation / total
+
+    # Standard deviation
+    standard_deviation = std(data)
+
+    # Statistics
+    statistics = [mean, standard_deviation,min_x_value, max_x_value, minimum_y_value, maximum_y_value]
+    return statistics
 
 
-print('The mean of the second sample is: ', mean2)
-#Standard deviation
-variance2 = sum([((float(i) - mean2)**2) for i in v])/len(v)
-res2 = variance2**0.5  # Taking the square root
-print("Standard deviation of the second sample is: " + str(res2))
-
-#Maximums and minimums
-maxu = max(u)
-maxv = max(v)
-print(maxu)
-print(maxv)
-
-minu= min(u)
-minv = min(v)
-print(minu)
-print(minv)
-
-values = np.array([mean2, res2, maxu, minu, maxv, minv])  # Need mean and standard deviation
-print(values)
+if __name__ == '__main__':
+    print(univariate_statistics(sys.argv[1]))
 

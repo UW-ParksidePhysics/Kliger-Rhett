@@ -1,13 +1,17 @@
 # Quadratic Fit
 # Fit a quadratic polynomial to a two row Numpy array of x-y data using Numpy's polyfit function
+import sys
 
-import numpy as np
 
-# If what is wanted is  x and y values given and fit those values to a plot for quadratic
-# Might need to read the file in, in that case use info from before
-# Here is an example array
-x = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-y = np.array([11, 12, 13, 14, 15, 16, 17, 18, 19, 20])
+def quadratic_fit(data):
+    from numpy import polyfit
 
-quadratic_coefficients = np.polyfit(x, y, 2)  # Fit values of x  and y into quadratic polynomial (degree 2)
-print("Quadratic coefficients: ", quadratic_coefficients)
+    un_data = zip(*data)
+    data_2 = list(un_data)
+
+    quadratic_coefficients = polyfit(data_2[0], data_2[1], 2)
+    return quadratic_coefficients
+
+
+if __name__ == '__main__':
+    print(quadratic_fit(sys.argv[1]))

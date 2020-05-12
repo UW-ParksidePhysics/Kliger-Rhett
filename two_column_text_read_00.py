@@ -21,6 +21,9 @@ def two_column_text_read(filename):
         y.append(float(content[1]))
     infile.close()
 
+    x, y, = np.array(x), np.array(y)
+    data = np.vstack(x,y)
+    return data
 two_column_text_read("hello")
 
 
