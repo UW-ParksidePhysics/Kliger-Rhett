@@ -1,3 +1,5 @@
+#lowest_eigenvectors
+#Return the eigenvalues and eigenvectors
 def square_matrix():  # Generates a square matrix to test
     from numpy import zeros
     A = zeros([10, 10]) #Want a 10X10 matrix
@@ -17,7 +19,7 @@ def square_matrix():  # Generates a square matrix to test
     return H
 
 
-def lowest_eigenvectors(square_matrix, number_of_eigenvectors=3):
+def lowest_eigenvectors(square_matrix, number_of_eigenvectors=3): #Default is 3
     from numpy import linalg, argsort
 
     M_rows = len(square_matrix)

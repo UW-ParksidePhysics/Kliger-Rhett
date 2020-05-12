@@ -3,11 +3,11 @@
 import sys
 
 
-def fit_curve_array(quadratic_coefficients, min_x, max_x, number_of_points=100):
+def fit_curve_array(quadratic_coefficients, min_x, max_x, number_of_points=10):
     import numpy as np
     try:
-        x = np.linspace(min_x, max_x, number_of_points)
-    except ArithmeticError:
+        x = np.linspace(min_x, max_x, number_of_points)  # Plot goes from minimum x value to maximum x value with number of points given
+    except ArithmeticError:  # The maximum x must be larger than the minimum for x.
         if max_x < min_x:
             print("Max_x less than min_x.")
 
