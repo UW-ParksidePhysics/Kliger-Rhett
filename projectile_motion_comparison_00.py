@@ -20,7 +20,7 @@ acceleration3 = vector(0, -3.7, 0)  # Gravity Mars
 animation_time_step = 0.01  # seconds
 rate_of_animation = 1/animation_time_step
 time_step = 0.01
-stop_time = 600
+stop_time = 100
 
 time = 0.
 while time < stop_time:
