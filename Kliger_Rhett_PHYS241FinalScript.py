@@ -18,6 +18,7 @@ my_eos = 'birch-murnaghan'
 potential_name = 'square'
 number_of_dimensions = 100
 potential_parameter = 200
+bulk_modulus = 77.2  # The bulk modulus of Germanium in GPa
 
 
 # Fit an Equation of a State
