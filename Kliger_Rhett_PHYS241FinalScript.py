@@ -8,7 +8,7 @@ import plot_data_with_fit_00
 import lowest_eigenvectors_00
 import univariate_statistics_00 as us
 import fit_curve_array_00
-import quadratic_fit_00
+import quadratic_fit_00 as qf
 import equations_of_state
 import matplotlib.pyplot as np
 
@@ -30,13 +30,14 @@ def parse_file_name(filename):
     print(to_parse[0:3])
     return CS, CSS, AA
 
-# 2. Read in data using two_column_text_read
+# 2. Read in data using two_column_text_read X
 data = tctr.two_column_text_read(filename)
 print('Data Read In:')
 print(data)
 
 # 3. Divide by 2 because Fd3m
 data1 = data/2
+print('Revised Data Based on Atoms:')
 print(data1)
 
 # 4. Pull out statistics using univariate_statistics module
@@ -44,6 +45,8 @@ statistics = us.univariate_statistics(filename)
 print('Statistics of Data from File:')
 print(statistics)
 
+# 5. Fit a quadratic polynomial using quadratic_fit module
+quadratic_coefficients = qf.quadratic_fit(data1)
 
 # Bohr is unit of length, Rydberg is unit of energy,
 # First column is volumes, second column is energies

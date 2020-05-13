@@ -30,10 +30,10 @@ def univariate_statistics(data):
     standard_deviation = std(data)  # Somewhat built in function
 
     # Statistics
-    statistics = [mean, standard_deviation,min_x_value, max_x_value, min_y_value, max_y_value]
+    statistics = [mean, standard_deviation, min_x_value, max_x_value, min_y_value, max_y_value]
     return statistics
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':  # For the module's name
     print(univariate_statistics(sys.argv[1]))
 

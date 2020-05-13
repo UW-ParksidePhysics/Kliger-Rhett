@@ -14,5 +14,5 @@ def quadratic_fit(data):
     return quadratic_coefficients
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':  # For the module's name
     print(quadratic_fit(sys.argv[1]))
