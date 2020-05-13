@@ -47,6 +47,8 @@ print(statistics)
 
 # 5. Fit a quadratic polynomial using quadratic_fit module
 quadratic_coefficients = qf.quadratic_fit(data1)
+print('Quadratic Coefficients of Revised Data:')
+print(quadratic_coefficients)
 
 # Bohr is unit of length, Rydberg is unit of energy,
 # First column is volumes, second column is energies
