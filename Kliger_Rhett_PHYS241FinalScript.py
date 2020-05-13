@@ -18,12 +18,12 @@ data = two_column_text_read_00.two_column_text_read(filename)  #Reads the file o
 print(data)
 exit()
 
-plot_data_with_fit_00.plot_data_with_fit(data, fit_curve=2, data_format=0, fit_format=0)
+#plot_data_with_fit_00.plot_data_with_fit(data, fit_curve=2, data_format=0, fit_format=0)
 
-lowest_eigenvectors_00.square_matrix()
+#lowest_eigenvectors_00.square_matrix()
 
-lowest_eigenvectors_00.lowest_eigenvectors(square_matrix=10, number_of_eigenvectors=3)
-print(lowest_eigenvectors_00.lowest_eigenvectors)
+#lowest_eigenvectors_00.lowest_eigenvectors(square_matrix=10, number_of_eigenvectors=3)
+#print(lowest_eigenvectors_00.lowest_eigenvectors)
 
 
 # Fit an Equation of a State
