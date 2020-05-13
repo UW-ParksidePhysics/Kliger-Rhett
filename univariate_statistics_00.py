@@ -18,7 +18,7 @@ def univariate_statistics(data):
         minimum_y_value = min(data[1])  # Minimum y-value, again built in minimum and maximum functions
         maximum_y_value = max(data[1])  # Maximum y-value
     except IndexError:  # Excepts error if length of data is less than one, no array
-        if len(data[0]) or len(data[1]) >=1:
+        if len(data[0]) or len(data[1]) <=1:
             print("You need more data points")
 
     # Mean
