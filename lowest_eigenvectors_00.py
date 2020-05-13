@@ -2,7 +2,7 @@
 #Return the eigenvalues and eigenvectors
 def square_matrix():  # Generates a square matrix to test
     from numpy import zeros
-    A = zeros([10, 10]) #Want a 10X10 matrix
+    A = zeros([10, 10]) #Want a 10X10 matrix of zeros
 
     n = 0
     while n <= 9:
