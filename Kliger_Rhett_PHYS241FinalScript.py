@@ -9,7 +9,7 @@ import lowest_eigenvectors_00
 import univariate_statistics_00 as us
 import fit_curve_array_00
 import quadratic_fit_00 as qf
-import equations_of_state
+import equations_of_state as eos
 import matplotlib.pyplot as np
 
 filename = 'Ge.Fd-3m.GGA-PBEsol.volumes_energies.dat'
@@ -49,6 +49,13 @@ print(data1)
 quadratic_coefficients = qf.quadratic_fit(data1)
 print('Quadratic Coefficients of Revised Data:')
 print(quadratic_coefficients)
+
+# 6. Pass quadratic coefficients and data into fit_eos function
+volumes = data1[0]
+energies = data1[1]
+eos_passed_info = eos.fit_eos(volumes, energies, quadratic_coefficients, my_eos, number_of_points=50)
+print('Fitted Data from File and Fitted Quadratic Coefficients: ')
+print(eos_passed_info)
 
 # Bohr is unit of length, Rydberg is unit of energy,
 # First column is volumes, second column is energies
