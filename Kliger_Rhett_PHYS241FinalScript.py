@@ -10,12 +10,13 @@ import univariate_statistics_00, statistics
 import fit_curve_array_00
 import quadratic_fit_00
 import equations_of_state
-
+# So from 1 on parse
 filename = 'Ge.Fd-3m.GGA-PBEsol.volumes_energies.dat'
 
-
+# I tried to do the overview here so is it ok to remove this portion?
 data = two_column_text_read_00.two_column_text_read(filename)  #Reads the file of two column data or should
-print(filename)
+print(data)
+exit()
 
 plot_data_with_fit_00.plot_data_with_fit(data, fit_curve=2, data_format=0, fit_format=0)
 
