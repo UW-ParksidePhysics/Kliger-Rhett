@@ -15,8 +15,8 @@ def univariate_statistics(data):
         if not len(data) == 2:   # Error would except if there is more than two columns of data or less than 2
             print("You only need two columns of data!")
     try:
-        minimum_y_value = min(data[1])  # Minimum y-value, again built in minimum and maximum functions
-        maximum_y_value = max(data[1])  # Maximum y-value
+        min_y_value = min(data[1])  # Minimum y-value, again built in minimum and maximum functions
+        max_y_value = max(data[1])  # Maximum y-value
     except IndexError:  # Excepts error if length of data is less than one, no array
         if len(data[0]) or len(data[1]) <=1:
             print("You need more data points")
@@ -27,10 +27,10 @@ def univariate_statistics(data):
     mean = summation / total
 
     # Standard deviation
-    standard_deviation = std(data)
+    standard_deviation = std(data)  # Somewhat built in function
 
     # Statistics
-    statistics = [mean, standard_deviation,min_x_value, max_x_value, minimum_y_value, maximum_y_value]
+    statistics = [mean, standard_deviation,min_x_value, max_x_value, min_y_value, max_y_value]
     return statistics
 
 
