@@ -18,6 +18,6 @@ def two_column_text_read(filename):
         y.append(float(content[1]))
     infile.close()
 
-    data = np.array([x, y])
+    data = np.vstack([x, y])
 
     return data
