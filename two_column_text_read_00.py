@@ -18,6 +18,6 @@ def two_column_text_read(filename):
         y.append(float(content[1]))
     infile.close()
 
-    data = np.vstack([x, y]).T
+    data = np.vstack([x, y]).T  # Arranges it in clearer columns the '.T'
 
     return data
