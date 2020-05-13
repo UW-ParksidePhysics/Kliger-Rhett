@@ -57,10 +57,24 @@ eos_passed_info = eos.fit_eos(volumes, energies, quadratic_coefficients, my_eos,
 print('Fitted Data from File and Fitted Quadratic Coefficients: ')
 print(eos_passed_info)
 
+# 7. Define a function to covert received data from 6. from atomic units to cubic bohr/atom, rydberg/atom, and rydberg/cubic bohr
 # Bohr is unit of length, Rydberg is unit of energy,
 # First column is volumes, second column is energies
-#def convert_units(data):
-    #return data[0]/data[1]  # Data 0 is volumes, data 1 is energies
+# Three arguments: the value to be converted, the units of the value to be converted from, the units to be converted to,
+# function should RETURN the value in requested units
+# (value_to_convert_from), (units_of_value_converted_from), (unit_to_convert_to)
+def convert_units(value_to_convert_from, units_of_value_converted_from, unit_to_convert_to):
+    if units_of_value_converted_from == 'cubic bohr/atom':
+        value_in_requested_units = value_to_convert_from * 0.148185  # 1 cubic Bohr equals 0.148185 Angstrom
+    elif units_of_value_converted_from == 'rydberg/atom':
+        value_in_requested_units = value_to_convert_from * 13.606  # 1 Rydberg equals 13.606eV
+    elif units_of_value_converted_from == 'rydberg/cubic bohr':
+        value_in_requested_units = value_to_convert_from / 29421.0265
+    else:
+        value_in_requested_units = value_to_convert_from
+    return value_in_requested_units
+
+
 
 
 
