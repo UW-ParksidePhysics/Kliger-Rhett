@@ -75,7 +75,22 @@ def convert_units(value_to_convert_from, units_of_value_converted_from, unit_to_
         value_in_requested_units = value_to_convert_from
     return value_in_requested_units
 
+# 8. Plot the data and the fit function with volume on the horizontal axis and energy on the vertical axis
+# Need to make it so that max x values and min x values are 10% beyond max and min data points
+# You should use raw strings (precede the quotes with an 'r'), and surround the math text with dollar signs ($)
+volumes = plt.linspace(min(data1[0], max(data1[0]), len(eos_passed_info)))
+print(volumes)
+plt.plot(data[0], data[1], 'o', color='blue')
+plt.plot(volumes, eos_passed_info, color='black')
+x_min = (min(data1[0] - min(data1[0]) * (0.10)))
+x_max = (max(data1[0] + max(data1[0]) * (0.10)))
+xlim = (x_min, x_max)
+xlabel = (r' $V$ $ \mathrm{eV/atom}\ $')
+ylabel = (r' $E$ $ \mathrm{AA^3/atom} $')
 
+plt.show()
+
+# 9.
 
 
 
