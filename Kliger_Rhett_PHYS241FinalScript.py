@@ -16,11 +16,11 @@ import numpy as np
 
 filename = 'Ge.Fd-3m.GGA-PBEsol.volumes_energies.dat'
 display_Graph = True
-my_eos = 'birch-murnaghan'
+my_eos = 'vinet'
 potential_name = 'square'
 number_of_dimensions = 100
 potential_parameter = 200
-bulk_modulus = 77.2  # The bulk modulus of Germanium in GPa
+
 
 
 # Fit an Equation of a State
@@ -33,6 +33,10 @@ def parse_file_name(filename):
     print(to_parse[0:3])
     return CS, CSS, AA
 
+
+# Call the function
+CS, CSS, AA = parse_file_name(filename)
+
 # 2. Read in data using two_column_text_read X
 data = tctr.two_column_text_read(filename)
 print('Data Read In:')
@@ -43,22 +47,25 @@ data1 = data/2
 print('Revised Data Based on Atoms:')
 print(data1)
 
-# 4. Pull out statistics using univariate_statistics module (Need Help)
-#statistics = us.univariate_statistics(filename)
-#print('Statistics of Data from File:')
-#print(statistics)
+# 4. Pull out statistics using univariate_statistics module (Need Help) X
+statistics = us.univariate_statistics(data1)
+print('Statistics of Data from File:')
+print(statistics)
 
 # 5. Fit a quadratic polynomial using quadratic_fit module  X
 quadratic_coefficients = qf.quadratic_fit(data1)
 print('Quadratic Coefficients of Revised Data:')
 print(quadratic_coefficients)
 
-# 6. Pass quadratic coefficients and data into fit_eos function
-volumes = data1[0]
-energies = data1[1]
-eos_passed_info = eos.fit_eos(volumes, energies, quadratic_coefficients, my_eos, number_of_points=50)
+# 6. Pass quadratic coefficients and data into fit_eos function X
+
+volumes = data1[:,0] # The : operator means all elements till the end.
+energies = data1[:,1] # The :, means all in that column
+eos_passed_info, eos_parameters = eos.fit_eos(volumes, energies, quadratic_coefficients, my_eos, number_of_points=50)
 print('Fitted Data from File and Fitted Quadratic Coefficients: ')
 print(eos_passed_info)
+equilibrium_volume = eos_parameters[3]
+bulk_modulus = eos_parameters[1]
 
 # 7. Define a function to covert received data from 6. from atomic units to cubic bohr/atom, rydberg/atom, and rydberg/cubic bohr
 # Bohr is unit of length, Rydberg is unit of energy,
@@ -80,29 +87,40 @@ def convert_units(value_to_convert_from, units_of_value_converted_from, unit_to_
 # 8. Plot the data and the fit function with volume on the horizontal axis and energy on the vertical axis
 # Need to make it so that max x values and min x values are 10% beyond max and min data points
 # You should use raw strings (precede the quotes with an 'r'), and surround the math text with dollar signs ($)
-volumes = np.linspace(min(data1[0], max(data1[0]), len(eos_passed_info)))
-print(volumes)
-plt.plot(data[0], data[1], 'o', color='blue')
-plt.plot(volumes, eos_passed_info, color='black')
-x_min = (min(data1[0] - min(data1[0]) * (0.10)))
-x_max = (max(data1[0] + max(data1[0]) * (0.10)))
-xlim = (x_min, x_max)
-xlabel = (r' $V$ $ \mathrm{eV/atom}\ $')
-ylabel = (r' $E$ $ \mathrm{AA^3/atom} $')
+eos_volumes = np.linspace(min(volumes), max(volumes), len(eos_passed_info))
 
-plt.show()
+print(eos_volumes)
+plt.plot(volumes, energies, 'o', color='blue')
+plt.plot(eos_volumes, eos_passed_info, color='black')
+x_min = (min(volumes) - (0.1) * (max(volumes) - min(volumes)))
+x_max = (max(volumes) + (0.1) * (max(volumes) - min(volumes)))
+y_min = (min(energies) - (0.1) * (max(energies) - min(energies)))
+y_max = (max(energies) + (0.1) * (max(energies) - min(energies)))
+plt.xlim(x_min, x_max)
+plt.ylim(y_min, y_max)
+plt.xlabel(r' $V$  [eV/atom] ')
+plt.ylabel(r' $E$  [$\AA^3$/atom] ')
+
 
 # 9. Write a function called annotate_graph to annotate the graph
 # 'Numbers' are placeholders
-equilibrium_volume = st.mean(eos_passed_info)
-def annotate_graph(PLACEHOLDER):
-    Ge = plt.text('number','number', 'Ge')
-    GGA_PBEsol = plt.text('number', 'number', (r' $Fd-3m\mathit{GGA-PBEsol}\ $'))
-    K = plt.text('number', 'number', ('K_0 =' + bulk_modulus + 'GPa'))
-    EqV = plt.text('number', 'number', 'V_0 =' + equilibrium_volume + r' $\mathit{AA^3/atom}\ $')
-    signature = ax.text(left, bottom, 'Created By Rhett Kliger 2020-5-14', horizontalalignment='left', verticalalignment='top', transform=ax.transAxes)
-    return Ge, GGA_PBEsol, K, EqV, signature
 
+def annotate_graph(CS, CSS, AA, bulk_modulus, equilibrium_volume, x_min, x_max, y_min, y_max):
+    x_range = x_max - x_min
+    y_range = y_max - y_min
+    x_CS = x_min + 0.05 * x_range #Coordinates of x for first one
+    y_CS = y_max - 0.05 * y_range #Coordinates of y for first one
+    plt.text(x_CS, y_CS, CS)
+    #plt.text('number', 'number', (r' $Fd-3m\mathit{GGA-PBEsol}\ $'))
+    #plt.text('number', 'number', ('K_0 =' + bulk_modulus + 'GPa'))
+    #plt.text('number', 'number', 'V_0 =' + equilibrium_volume + r' $\mathit{AA^3/atom}\ $')
+    #plt.text(left, bottom, 'Created By Rhett Kliger 2020-5-14', horizontalalignment='left', verticalalignment='top', transform=ax.transAxes)
+    #return
+
+
+annotate_graph(CS, CSS, AA, bulk_modulus, equilibrium_volume, x_min, x_max, y_min, y_max)
+
+plt.show()
 # 10.
 
 
