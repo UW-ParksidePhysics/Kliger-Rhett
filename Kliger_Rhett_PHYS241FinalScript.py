@@ -110,8 +110,8 @@ def annotate_graph(CS, CSS, AA, bulk_modulus, equilibrium_volume, x_min, x_max, 
     y_range = y_max - y_min
     x_CS = x_min + 0.05 * x_range #Coordinates of x for chemical symbol
     y_CS = y_max - 0.05 * y_range #Coordinates of y for chemical symbol
-    x_CSS = (x_max - x_min)/2
-    y_CSS = (y_max - y_min)/2
+    x_CSS = (x_range)/2
+    y_CSS = (y_range)/2
     plt.text(x_CS, y_CS, CS)
     plt.text(x_CSS, y_CSS, CSS)
     #plt.text('number', 'number', ('K_0 =' + bulk_modulus + 'GPa'))
