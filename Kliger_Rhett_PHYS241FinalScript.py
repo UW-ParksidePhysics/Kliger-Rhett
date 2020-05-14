@@ -6,7 +6,7 @@
 import matplotlib.pyplot as plt
 import two_column_text_read_00 as tctr
 import plot_data_with_fit_00
-import lowest_eigenvectors_00
+import lowest_eigenvectors_00 as le
 import univariate_statistics_00 as us
 import fit_curve_array_00
 import quadratic_fit_00 as qf
@@ -69,7 +69,7 @@ print(eos_passed_info)
 equilibrium_volume = eos_parameters[3]
 bulk_modulus = eos_parameters[1]
 
-# 7. Define a function to covert received data from 6. from atomic units to cubic bohr/atom, rydberg/atom, and rydberg/cubic bohr
+# 7. Define a function to covert received data from 6. from atomic units to cubic bohr/atom, rydberg/atom, and rydberg/cubic bohr X
 # Bohr is unit of length, Rydberg is unit of energy,
 # First column is volumes, second column is energies
 # Three arguments: the value to be converted, the units of the value to be converted from, the units to be converted to,
@@ -88,7 +88,7 @@ def convert_units(value_to_convert_from, units_of_value_converted_from, unit_to_
 
 # 8. Plot the data and the fit function with volume on the horizontal axis and energy on the vertical axis
 # Need to make it so that max x values and min x values are 10% beyond max and min data points
-# You should use raw strings (precede the quotes with an 'r'), and surround the math text with dollar signs ($)
+# You should use raw strings (precede the quotes with an 'r'), and surround the math text with dollar signs ($) X
 eos_volumes = np.linspace(min(volumes), max(volumes), len(eos_passed_info))
 
 print(eos_volumes)
@@ -136,14 +136,21 @@ def annotate_graph(CS, CSS, AA, bulk_modulus, equilibrium_volume, x_min, x_max, 
 annotate_graph(CS, CSS, AA, bulk_modulus, equilibrium_volume, x_min, x_max, y_min, y_max)
 
 plt.show()
-# 10. Display graph True, is at top of script
+# 10. Display graph True, is at top of script X
 
 # Visualize Vectors In Space
 
-# 1. Generate the matrix according to the parameters given to you on the Final Exam Data page with the generate_matrix function linked from that page
-generated_matrix = gm.generate_matrix(minimum_x, maximum_x, number_of_dimensions, potential_name, potential_parameter)
+# 1. Generate the matrix according to the parameters with the generate_matrix function X
+square_matrix = gm.generate_matrix(minimum_x, maximum_x, number_of_dimensions, potential_name, potential_parameter)
 print('Matrix Generated with Given Values: ')
-print(generated_matrix)
+print(square_matrix)
+
+# 2. Use your lowest_eigenvectors function to calculate and
+# return the three eigenvectors and eigenvalues of the matrix requested on the Final Exam Data page. X
+lowest_eigenvectors = le.lowest_eigenvectors(square_matrix, number_of_eigenvectors=3)
+print("These are the lowest eigenvectors: ")
+print(lowest_eigenvectors)
+
 
 
 
