@@ -16,7 +16,7 @@ import numpy as np
 
 filename = 'Ge.Fd-3m.GGA-PBEsol.volumes_energies.dat'
 display_Graph = True
-my_eos = 'birch_murnaghan'
+my_eos = 'vinet'
 potential_name = 'square'
 number_of_dimensions = 100
 potential_parameter = 200
@@ -108,10 +108,12 @@ plt.ylabel(r' $E$  [$\AA^3$/atom] ')
 def annotate_graph(CS, CSS, AA, bulk_modulus, equilibrium_volume, x_min, x_max, y_min, y_max):
     x_range = x_max - x_min
     y_range = y_max - y_min
-    x_CS = x_min + 0.05 * x_range #Coordinates of x for first one
-    y_CS = y_max - 0.05 * y_range #Coordinates of y for first one
+    x_CS = x_min + 0.05 * x_range #Coordinates of x for chemical symbol
+    y_CS = y_max - 0.05 * y_range #Coordinates of y for chemical symbol
+    x_CSS = (x_max - x_min)/2
+    y_CSS = (y_max - y_min)/2
     plt.text(x_CS, y_CS, CS)
-    #plt.text('number', 'number', (r' $Fd-3m\mathit{GGA-PBEsol}\ $'))
+    #plt.text(152, -0.09, CSS)
     #plt.text('number', 'number', ('K_0 =' + bulk_modulus + 'GPa'))
     #plt.text('number', 'number', 'V_0 =' + equilibrium_volume + r' $\mathit{AA^3/atom}\ $')
     #plt.text(left, bottom, 'Created By Rhett Kliger 2020-5-14', horizontalalignment='left', verticalalignment='top', transform=ax.transAxes)
