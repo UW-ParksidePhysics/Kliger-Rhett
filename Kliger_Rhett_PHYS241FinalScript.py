@@ -113,7 +113,7 @@ def annotate_graph(CS, CSS, AA, bulk_modulus, equilibrium_volume, x_min, x_max, 
     x_CSS = (x_max - x_min)/2
     y_CSS = (y_max - y_min)/2
     plt.text(x_CS, y_CS, CS)
-    #plt.text(152, -0.09, CSS)
+    plt.text(x_CSS, y_CSS, CSS)
     #plt.text('number', 'number', ('K_0 =' + bulk_modulus + 'GPa'))
     #plt.text('number', 'number', 'V_0 =' + equilibrium_volume + r' $\mathit{AA^3/atom}\ $')
     #plt.text(left, bottom, 'Created By Rhett Kliger 2020-5-14', horizontalalignment='left', verticalalignment='top', transform=ax.transAxes)
