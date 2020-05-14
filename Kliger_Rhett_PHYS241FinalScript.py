@@ -99,9 +99,9 @@ def annotate_graph(PLACEHOLDER):
     Ge = plt.text('number','number', 'Ge')
     GGA_PBEsol = plt.text('number', 'number', (r' $Fd-3m\mathit{GGA-PBEsol}\ $'))
     K = plt.text('number', 'number', ('K_0 =' + bulk_modulus + 'GPa'))
-    EqV = plt.text('number', 'number', 'V_0 =' + equlibrium_volume + r' $\mathit{AA^3/atom}\ $')
+    EqV = plt.text('number', 'number', 'V_0 =' + equilibrium_volume + r' $\mathit{AA^3/atom}\ $')
     signature = ax.text(left, bottom, 'Created By Rhett Kliger 2020-5-14', horizontalalignment='left', verticalalignment='top', transform=ax.transAxes)
-    return Ge, GGA_PBEsol, K, EqV,
+    return Ge, GGA_PBEsol, K, EqV, signature
 
 # 10.
 
