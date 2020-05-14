@@ -66,7 +66,7 @@ print(eos_passed_info)
 # (value_to_convert_from), (units_of_value_converted_from), (unit_to_convert_to)
 def convert_units(value_to_convert_from, units_of_value_converted_from, unit_to_convert_to):
     if units_of_value_converted_from == 'cubic bohr/atom':
-        value_in_requested_units = value_to_convert_from * 0.148185  # 1 cubic Bohr equals 0.148185 Angstrom
+        value_in_requested_units = value_to_convert_from * 0.148185  # 1 cubic Bohr equals 0.148185 cubic Angstrom
     elif units_of_value_converted_from == 'rydberg/atom':
         value_in_requested_units = value_to_convert_from * 13.606  # 1 Rydberg equals 13.606eV
     elif units_of_value_converted_from == 'rydberg/cubic bohr':
@@ -92,7 +92,12 @@ plt.show()
 
 # 9. Write a function called annotate_graph to annotate the graph
 location1 = (min(data1[0]), max(eos_passed_info))  # Upper lefthand corner
-def annotate_graph():
+def annotate_graph(data1, eos_passed_info):
+    Ge = plt.text((min(data1[0])), max(eos_passed_info), 'Ge')
+    GGA_PBEsol = plt.text(('Enter coordinates of middle on x'), ('Enter coordinates above graph data'), (r' $Fd-3m\mathit{GGA-PBEsol}\ $'))
+    K = plt.text(('Enter coordintates of middle on x'), ('above previous one'), ('K_0 =' + bulk_modulus + 'GPa'))
+    return Ge, GGA_PBEsol, K
+
 
 
 
