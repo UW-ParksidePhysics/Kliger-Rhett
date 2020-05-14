@@ -105,16 +105,20 @@ plt.ylabel(r' $E$  [$\AA^3$/atom] ')
 # 9. Write a function called annotate_graph to annotate the graph
 # 'Numbers' are placeholders
 
-def annotate_graph(CS, CSS, AA, bulk_modulus, equilibrium_volume, x_min, x_max, y_min, y_max):
+def annotate_graph(CS, CSS, AA, bulk_modulus, equilibrium_volume, x_min, x_max, y_min, y_max): # If not add CSS
     x_range = x_max - x_min
     y_range = y_max - y_min
     x_CS = x_min + 0.05 * x_range #Coordinates of x for chemical symbol
     y_CS = y_max - 0.05 * y_range #Coordinates of y for chemical symbol
     x_CSS = x_min + x_range/2
     y_CSS = y_max - y_range/2
+    x_K = x_min + x_range/2
+    y_K = ((y_max - y_range/2) + 0.0005)
     plt.text(x_CS, y_CS, CS)
-    plt.text(x_CSS, y_CSS, CSS )
-    #plt.text('number', 'number', ('K_0 =' + bulk_modulus + 'GPa'))
+    print(CSS)
+    plt.text(x_CSS, y_CSS, r' $ \ Fd}$3$m} $')  # Had to do it this way for italics
+    print(bulk_modulus)
+    plt.text(x_K, y_K, r' $K_0$ =0.00456392914 GPa')  # Might need to change this with 'birch-murnaghan'
     #plt.text('number', 'number', 'V_0 =' + equilibrium_volume + r' $\mathit{AA^3/atom}\ $')
     #plt.text(left, bottom, 'Created By Rhett Kliger 2020-5-14', horizontalalignment='left', verticalalignment='top', transform=ax.transAxes)
     #return
