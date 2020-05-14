@@ -16,7 +16,7 @@ import numpy as np
 
 filename = 'Ge.Fd-3m.GGA-PBEsol.volumes_energies.dat'
 display_Graph = True
-my_eos = 'vinet'
+my_eos = 'birch-murnaghan'
 potential_name = 'square'
 number_of_dimensions = 100
 potential_parameter = 200
@@ -114,6 +114,8 @@ def annotate_graph(CS, CSS, AA, bulk_modulus, equilibrium_volume, x_min, x_max, 
     y_CSS = y_max - y_range/2
     x_K = x_min + x_range/2
     y_K = ((y_max - y_range/2) + 0.0005)
+    print(AA)
+    plt.title('Birch Murnaghan Equation of State for Ge in DFT GGA_PBEsol', y=1.05) # Move title up so no overlapping
     plt.text(x_CS, y_CS, CS)
     print(CSS)
     plt.text(x_CSS, y_CSS, r' $ \ Fd}$3$m} $')  # Had to do it this way for italics
