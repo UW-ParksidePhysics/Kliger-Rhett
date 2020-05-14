@@ -90,7 +90,10 @@ ylabel = (r' $E$ $ \mathrm{AA^3/atom} $')
 
 plt.show()
 
-# 9.
+# 9. Write a function called annotate_graph to annotate the graph
+location1 = (min(data1[0]), max(eos_passed_info))  # Upper lefthand corner
+def annotate_graph():
+
 
 
 
