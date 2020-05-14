@@ -13,6 +13,7 @@ import quadratic_fit_00 as qf
 import equations_of_state as eos
 import statistics as st
 import numpy as np
+import generate_matrix as gm
 
 filename = 'Ge.Fd-3m.GGA-PBEsol.volumes_energies.dat'
 display_Graph = True
@@ -20,7 +21,8 @@ my_eos = 'birch-murnaghan'
 potential_name = 'square'
 number_of_dimensions = 100
 potential_parameter = 200
-
+minimum_x = 1  # Number I chose
+maximum_x = 400  # Number I chose
 
 
 # Fit an Equation of a State
@@ -126,7 +128,7 @@ def annotate_graph(CS, CSS, AA, bulk_modulus, equilibrium_volume, x_min, x_max, 
     plt.axvline(x=155.59, ymin=-0.1, ymax=-0.0905, ls='--', color='black')
     print(equilibrium_volume)  # Found value, put value in
     plt.text(x_EqV, y_EqV, r' $V_0 = 155.59 \AA^3/atom $')
-    #plt.text(left, bottom, 'Created By Rhett Kliger 2020-5-14', horizontalalignment='left', verticalalignment='top', transform=ax.transAxes)
+    #plt.figtext(0, 0, 'Created By Rhett Kliger 2020-5-14', horizontalalignment='left', verticalalignment='top')
     #plt.savefig('')
     #return
 
@@ -134,8 +136,14 @@ def annotate_graph(CS, CSS, AA, bulk_modulus, equilibrium_volume, x_min, x_max, 
 annotate_graph(CS, CSS, AA, bulk_modulus, equilibrium_volume, x_min, x_max, y_min, y_max)
 
 plt.show()
-# 10.
+# 10. Display graph True, is at top of script
 
+# Visualize Vectors In Space
+
+# 1. Generate the matrix according to the parameters given to you on the Final Exam Data page with the generate_matrix function linked from that page
+generated_matrix = gm.generate_matrix(minimum_x, maximum_x, number_of_dimensions, potential_name, potential_parameter)
+print('Matrix Generated with Given Values: ')
+print(generated_matrix)
 
 
 
