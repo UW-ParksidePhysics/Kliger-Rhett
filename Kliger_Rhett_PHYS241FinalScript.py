@@ -16,7 +16,7 @@ import numpy as np
 
 filename = 'Ge.Fd-3m.GGA-PBEsol.volumes_energies.dat'
 display_Graph = True
-my_eos = 'vinet'
+my_eos = 'birch_murnaghan'
 potential_name = 'square'
 number_of_dimensions = 100
 potential_parameter = 200
