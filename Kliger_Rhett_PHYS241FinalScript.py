@@ -114,6 +114,7 @@ def annotate_graph(CS, CSS, AA, bulk_modulus, equilibrium_volume, x_min, x_max, 
     y_CSS = y_max - y_range/2
     x_K = x_min + x_range/2
     y_K = ((y_max - y_range/2) + 0.0005)
+    x_dash = 152
     print(AA)
     plt.title('Birch Murnaghan Equation of State for Ge in DFT GGA_PBEsol', y=1.05) # Move title up so no overlapping
     plt.text(x_CS, y_CS, CS)
@@ -121,8 +122,10 @@ def annotate_graph(CS, CSS, AA, bulk_modulus, equilibrium_volume, x_min, x_max, 
     plt.text(x_CSS, y_CSS, r' $ \ Fd}$3$m} $')  # Had to do it this way for italics
     print(bulk_modulus)
     plt.text(x_K, y_K, r' $K_0$ =0.00456392914 GPa')  # Might need to change this with 'birch-murnaghan'
+    plt.axvline(x=152, ymin=-0.1, ymax=-0.0905, ls='--', color='black')
     #plt.text('number', 'number', 'V_0 =' + equilibrium_volume + r' $\mathit{AA^3/atom}\ $')
     #plt.text(left, bottom, 'Created By Rhett Kliger 2020-5-14', horizontalalignment='left', verticalalignment='top', transform=ax.transAxes)
+    #plt.savefig('')
     #return
 
 
