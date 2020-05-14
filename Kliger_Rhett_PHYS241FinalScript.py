@@ -108,13 +108,14 @@ plt.ylabel(r' $E$  [$\AA^3$/atom] ')
 def annotate_graph(CS, CSS, AA, bulk_modulus, equilibrium_volume, x_min, x_max, y_min, y_max): # If not add CSS
     x_range = x_max - x_min
     y_range = y_max - y_min
-    x_CS = x_min + 0.05 * x_range #Coordinates of x for chemical symbol
-    y_CS = y_max - 0.05 * y_range #Coordinates of y for chemical symbol
-    x_CSS = x_min + x_range/2
-    y_CSS = y_max - y_range/2
-    x_K = x_min + x_range/2
-    y_K = ((y_max - y_range/2) + 0.0005)
-    x_dash = 152
+    x_CS = x_min + 0.05 * x_range  # Coordinates of x for chemical symbol
+    y_CS = y_max - 0.05 * y_range  # Coordinates of y for chemical symbol
+    x_CSS = x_min + x_range/2  # Coordinates of x for CSS
+    y_CSS = y_max - y_range/2  # Coordinates of y for CSS
+    x_K = x_min + x_range/2  # Coordinates of x for bulk modulus
+    y_K = ((y_max - y_range/2) + 0.0005)  # Coordinates of y for bulk modulus
+    x_EqV = (x_min + x_range/2)
+    y_EqV = ((y_max - y_range/2) - 0.004)
     print(AA)
     plt.title('Birch Murnaghan Equation of State for Ge in DFT GGA_PBEsol', y=1.05) # Move title up so no overlapping
     plt.text(x_CS, y_CS, CS)
@@ -122,8 +123,9 @@ def annotate_graph(CS, CSS, AA, bulk_modulus, equilibrium_volume, x_min, x_max, 
     plt.text(x_CSS, y_CSS, r' $ \ Fd}$3$m} $')  # Had to do it this way for italics
     print(bulk_modulus)
     plt.text(x_K, y_K, r' $K_0$ =0.00456392914 GPa')  # Might need to change this with 'birch-murnaghan'
-    plt.axvline(x=152, ymin=-0.1, ymax=-0.0905, ls='--', color='black')
-    #plt.text('number', 'number', 'V_0 =' + equilibrium_volume + r' $\mathit{AA^3/atom}\ $')
+    plt.axvline(x=155.59, ymin=-0.1, ymax=-0.0905, ls='--', color='black')
+    print(equilibrium_volume)  # Found value, put value in
+    plt.text(x_EqV, y_EqV, r' $V_0 = 155.59 \AA^3/atom $')
     #plt.text(left, bottom, 'Created By Rhett Kliger 2020-5-14', horizontalalignment='left', verticalalignment='top', transform=ax.transAxes)
     #plt.savefig('')
     #return
