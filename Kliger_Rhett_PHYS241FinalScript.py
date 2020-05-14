@@ -91,11 +91,13 @@ ylabel = (r' $E$ $ \mathrm{AA^3/atom} $')
 plt.show()
 
 # 9. Write a function called annotate_graph to annotate the graph
-location1 = (min(data1[0]), max(eos_passed_info))  # Upper lefthand corner
+xlocation1 = (min(data1[0]))  # Upper lefthand corner
+ylocation1 = ('Height above graph')  # I will need to figure this out after I get previous to work, placeholder
+ylocation2 = ('Height above ylocation1')  # I will need to figure this out after I get previous to work, placeholder
 def annotate_graph(data1, eos_passed_info):
     Ge = plt.text((min(data1[0])), max(eos_passed_info), 'Ge')
-    GGA_PBEsol = plt.text(('Enter coordinates of middle on x'), ('Enter coordinates above graph data'), (r' $Fd-3m\mathit{GGA-PBEsol}\ $'))
-    K = plt.text(('Enter coordintates of middle on x'), ('above previous one'), ('K_0 =' + bulk_modulus + 'GPa'))
+    GGA_PBEsol = plt.text(xlocation1, ylocation1, (r' $Fd-3m\mathit{GGA-PBEsol}\ $'))
+    K = plt.text(xlocation1, ylocation2, ('K_0 =' + bulk_modulus + 'GPa'))
     return Ge, GGA_PBEsol, K
 
 
