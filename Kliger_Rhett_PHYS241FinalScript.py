@@ -17,6 +17,7 @@ import generate_matrix as gm
 
 filename = 'Ge.Fd-3m.GGA-PBEsol.volumes_energies.dat'
 display_Graph = True
+display_graph2 = True
 my_eos = 'birch-murnaghan'
 potential_name = 'square'
 number_of_dimensions = 100
@@ -128,14 +129,18 @@ def annotate_graph(CS, CSS, AA, bulk_modulus, equilibrium_volume, x_min, x_max, 
     plt.axvline(x=155.59, ymin=-0.1, ymax=-0.0905, ls='--', color='black')
     print(equilibrium_volume)  # Found value, put value in
     plt.text(x_EqV, y_EqV, r' $V_0 = 155.59 \AA^3/atom $')
-    #plt.figtext(0, 0, 'Created By Rhett Kliger 2020-5-14', horizontalalignment='left', verticalalignment='top')
-    #plt.savefig('')
+    plt.figtext(0, 0, 'Created By Rhett Kliger 2020-5-14')
+
     #return
 
 
 annotate_graph(CS, CSS, AA, bulk_modulus, equilibrium_volume, x_min, x_max, y_min, y_max)
 
-plt.show()
+if display_Graph == True: # Test if True
+    plt.show(display_Graph)  # Show
+elif display_Graph == False:  # Basically otherwise
+    plt.savefig('Kliger_Rhett_Ge.Fd-3m.GGA-PBEsol.png')
+
 # 10. Display graph True, is at top of script X
 
 # Visualize Vectors In Space
@@ -147,11 +152,11 @@ print(square_matrix)
 
 # 2. Use your lowest_eigenvectors function to calculate and
 # return the three eigenvectors and eigenvalues of the matrix requested on the Final Exam Data page. X
-lowest_eigenvectors = le.lowest_eigenvectors(square_matrix, number_of_eigenvectors=3)
-print("These are the lowest eigenvectors: ")
-print(lowest_eigenvectors)
+eigenvalues, eigenvectors = le.lowest_eigenvectors(square_matrix, number_of_eigenvectors=3)
+print("Here are the eigenvalues and eigenvectors: ")
+print(eigenvalues, eigenvectors)
 
-# 3. Use NumPy's linspace to generate the grid of spatial points between -10 and 10 with Ndim points
+# 3. Use NumPy's linspace to generate the grid of spatial points between -10 and 10 with Ndim points X
 # N dim = 100 is listed as number_of_dimensions
 # numpy linspace(start, stop, number of points)
 grid_of_spatial_points = np.linspace(-10, 10, number_of_dimensions)
@@ -161,5 +166,26 @@ print(grid_of_spatial_points)
 # 4. Plot the eigenvectors against the grid with a solid contrasting color curves:
 # If the lowest eigenvalue eigenvector is in your set, you should make the eigenvector positive if the components are negative.
 
-plot1 = np.plot()
+plot1 = plt.plot(grid_of_spatial_points, eigenvectors[0][0:number_of_dimensions], color='blue')
+plot2 = plt.plot(grid_of_spatial_points, eigenvectors[1][0:number_of_dimensions], color='red')
+plot3 = plt.plot(grid_of_spatial_points, eigenvectors[2][0:number_of_dimensions], color='green')
+plt.xlabel('x [a.u.]')  # a.u. is atomic units
+plt.ylabel(r' $\psi_n$(x)[a.u.]')
+plt.legend((plot1, plot2, plot3),(r'$\psi_n$,$E_1$=(1)[a.u.]', r'$\psi_n$,$E_2$=(2)[a.u.]', r'$\psi_n$,$E_3$=(3)[a.u.]'))
+plt.axis([-10, 10, max(eigenvectors[0]) - 2, max(eigenvectors[0]) + 2])  # Set vertical axis 2X max eigenvector component
 
+# 5. Plot black horizontal line at psi = 0
+# I can use axhline which is for horizontal lines
+plt.axhline(color="black")
+
+# 6. Sign the graph "Created by 2020-05-12" in the bottom left of the plot below the axes labels and tickmarks.
+plt.text(-9, -1.5, 'Created By Rhett Kliger 2020-05-14')
+
+# 7. Title the graph
+plt.title('Select Wavefunctions for a Square Potential on a Spatial Grid of 100 Points')
+
+# 8. Make a display graph variable
+if display_graph2 == True: # Test if True
+    plt.show(display_graph2)  # Show
+elif display_graph2 == False:  # Basically otherwise
+    plt.savefig('Kliger_Rhett_Wavefunctions_Square_Potential.png')
