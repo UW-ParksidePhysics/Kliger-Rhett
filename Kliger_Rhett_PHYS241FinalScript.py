@@ -151,6 +151,15 @@ lowest_eigenvectors = le.lowest_eigenvectors(square_matrix, number_of_eigenvecto
 print("These are the lowest eigenvectors: ")
 print(lowest_eigenvectors)
 
+# 3. Use NumPy's linspace to generate the grid of spatial points between -10 and 10 with Ndim points
+# N dim = 100 is listed as number_of_dimensions
+# numpy linspace(start, stop, number of points)
+grid_of_spatial_points = np.linspace(-10, 10, number_of_dimensions)
+print('This is the Grid of Spatial Points: ')
+print(grid_of_spatial_points)
 
+# 4. Plot the eigenvectors against the grid with a solid contrasting color curves:
+# If the lowest eigenvalue eigenvector is in your set, you should make the eigenvector positive if the components are negative.
 
+plot1 = np.plot()
 
